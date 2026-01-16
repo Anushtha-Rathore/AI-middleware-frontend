@@ -380,6 +380,27 @@ function MainSlider({ isEmbedUser , openDetails , userdetailsfromOrg , orgIdFrom
     setIsMobileVisible(prev => !prev);
   }, []);
 
+
+  const handleInviteUser = () => {
+  const PROXY_AUTH_TOKEN = getFromCookies('proxy_token'); // You'll need to import getFromCookies
+  
+  // const configuration = {
+  //   authToken: PROXY_AUTH_TOKEN,
+  //   pass: true,
+  //   type: 'user-management',
+  //   success: (data) => {
+  //     console.log('MSG91 Auth success response', data);
+  //     toast.success('Authentication verified successfully!');
+  //   },
+  //   failure: (error) => {
+  //     console.log('MSG91 Auth failure reason', error);
+  //     toast.error('Authentication failed. Please try again.');
+  //   },
+  // }; if (typeof window.initVerification === 'function') {
+  //     window.initVerification(configuration);
+  //     window.dispatchEvent(new Event('openAddUserDialog'));
+  //   }
+  };
   
   
   // Reusable function for rendering organization dropdown content
@@ -413,9 +434,7 @@ function MainSlider({ isEmbedUser , openDetails , userdetailsfromOrg , orgIdFrom
             </div>
             <button 
               onClick={() => {
-                setIsOrgDropdownExpanded(false);
-                setIsOrgDropdownOpen(false);
-                openModal(MODAL_TYPE.INVITE_USER);
+                 window.dispatchEvent(new Event('openAddUserDialog'));
               }}
               className="text-xs text-blue-400 hover:text-blue-600 transition-colors font-medium"
             >
